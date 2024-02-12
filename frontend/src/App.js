@@ -6,12 +6,29 @@ import "./App.css";
 
 function App() {
   const [copied, setCopied] = useState(false);
+  const [longUrl, setLongUrl] = useState (' ');
+  const [shortUrl, setShortUrl] = useState (' ');
 
   const copyToClipboard = () => {
     const textToCopy = document.getElementById("shortened-url").innerText;
     navigator.clipboard.writeText(textToCopy);
     setCopied(true);
   };
+
+  function handleInputChange(e){
+    return setLongUrl(e.target.value);
+     }
+
+    const shortenUrl = () =>{
+      fetch(`https://tinyurl.com/api-create.php?url=${longUrl}`)
+      .then (response => response.text())
+      .then(data => {
+        setShortUrl(data);
+        setCopied (false);
+      })
+      .catch (error => console.error('Error', error));
+
+    }
 
   return (
     <>
@@ -24,16 +41,20 @@ function App() {
             placeholder="Paste your URL here"
             aria-label="Long-URL"
             aria-describedby="basic-addon2"
+            onChange = {handleInputChange}
+            value = {longUrl}
           />
-          <Button variant="outline-secondary" id="button-addon2">
+          <Button variant="outline-secondary" id="button-addon2" onClick = {shortenUrl}>
             Shorten URL
           </Button>
         </InputGroup>
       </div>
+
+     
       <div className="output-section">
         <Alert variant="success" className="text-center">
           <Alert.Heading>URL shortened successfully:</Alert.Heading>
-          <p id="shortened-url">Gugu gaga juju</p>
+          <p id="shortened-url">{shortUrl}</p>
           <hr />
           <div className="d-flex justify-content-center mb-3">
             <Button
@@ -46,7 +67,9 @@ function App() {
           </div>
         </Alert>
       </div>
-    </>
+    </> 
+     
+     
   );
 }
 
