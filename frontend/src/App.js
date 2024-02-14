@@ -34,6 +34,7 @@ function App() {
     <>
       <div className="title-section">
         <h1>URL SHORTENER</h1>
+        <p>Created by RaresDev, using the Tinyurl API.</p>
       </div>
       <div className="input-section">
         <InputGroup className="mb-3">
@@ -53,7 +54,7 @@ function App() {
      
       <div className="output-section">
         <Alert variant="success" className="text-center">
-          <Alert.Heading>URL shortened successfully:</Alert.Heading>
+          <Alert.Heading className="alertheading">Your shortened URL will appear here:</Alert.Heading>
           <p id="shortened-url">{shortUrl}</p>
           <hr />
           <div className="d-flex justify-content-center mb-3">
