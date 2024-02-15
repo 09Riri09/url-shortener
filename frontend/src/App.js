@@ -3,6 +3,7 @@ import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { InputGroup, Form, Button, Alert } from "react-bootstrap";
 import "./App.css";
+import axios from "axios";
 
 function App() {
   const [copied, setCopied] = useState(false);
@@ -19,7 +20,7 @@ function App() {
     return setLongUrl(e.target.value);
      }
 
-    const shortenUrl = () =>{
+    /*const shortenUrl = () =>{
       fetch(`https://tinyurl.com/api-create.php?url=${longUrl}`)
       .then (response => response.text())
       .then(data => {
@@ -28,13 +29,24 @@ function App() {
       })
       .catch (error => console.error('Error', error));
 
+    } */
+
+    const shortenUrl = () => {
+      axios.post ('https://wj6p6ektw9.execute-api.eu-west-1.amazonaws.com/prod/add-url/',{
+        url: longUrl
+      })
+      .then(response => { 
+        setShortUrl(`https://wj6p6ektw9.execute-api.eu-west-1.amazonaws.com/prod/short/${response.data.shortUrl}`);
+        setCopied (false);
+      })
+      .catch (error => console.error('Error', error));
     }
 
   return (
     <>
       <div className="title-section">
-        <h1>URL SHORTENER</h1>
-        <p>Created by RaresDev, using the Tinyurl API.</p>
+        <h1>URL SHORTENER (kinda)</h1>
+        <p>Created by RaresDev, using a custom API.</p>
       </div>
       <div className="input-section">
         <InputGroup className="mb-3">
