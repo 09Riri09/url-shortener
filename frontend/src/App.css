@@ -36,3 +36,54 @@
     transform: rotate(360deg);
   }
 }
+
+@media (max-width: 768px) {
+  .title-section h1 {
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  .title-section p {
+    font-size: 16px;
+  }
+
+  .input-section .form-control,
+  .output-section .alert {
+    min-width: 250px;
+    font-size: 14px;
+  }
+
+  .input-section .btn,
+  .output-section .btn {
+    padding: 10px;
+    margin: 10px auto;
+    display: block;
+  }
+
+  .input-section,
+  .output-section {
+    margin: 0 20px;
+    padding: 20px;
+  }
+
+  .alert .alertheading {
+    font-size: 18px;
+  }
+
+  .alert p,
+  .alert .d-flex {
+    margin-top: 10px;
+  }
+
+  .input-section .btn-wrapper {
+    display: flex;
+    justify-content: center;
+    width: 100%; 
+    margin-top: 10px; 
+  }
+
+  .input-section .form-control {
+    width: 100%; 
+    box-sizing: border-box; 
+  }
+}
