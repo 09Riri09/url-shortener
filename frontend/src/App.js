@@ -9,6 +9,7 @@ function App() {
   const [longUrl, setLongUrl] = useState("");
   const [shortUrl, setShortUrl] = useState("");
   const [tinyUrl, setTinyUrl] = useState(""); 
+
   const handleInputChange = (e) => {
     setLongUrl(e.target.value);
   };
@@ -57,8 +58,8 @@ function App() {
   return (
     <>
       <div className="title-section">
-        <h1>URL SHORTENER (kinda)</h1>
-        <p>Created by RaresDev, using React and Bootstrap components for the frontend and AWS and Javascript for the backend.</p>
+        <h1>URL SHORTENER</h1>
+        <p>Created by RaresDev, using React and Bootstrap components for the frontend and AWS and Javascript for the backend. You can also use the TinyURL API</p>
       </div>
       <div className="input-section">
         <InputGroup className="mb-3">
